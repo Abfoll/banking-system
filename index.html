@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Banking System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Welcome to SecureBank</h1>
+        </header>
+
+        <div id="login-screen" class="screen">
+            <h2>Login to Your Account</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="account-number">Account Number</label>
+                    <input type="text" id="account-number" placeholder="Enter 8-digit account number" required>
+                </div>
+                <div class="form-group">
+                    <label for="pin">PIN</label>
+                    <input type="password" id="pin" placeholder="Enter 4-digit PIN" required>
+                </div>
+                <button type="submit">Login</button>
+                <p id="login-error" class="error-message"></p>
+            </form>
+        </div>
+
+        <div id="main-screen" class="screen hidden">
+            <div class="user-info">
+                <h2>Welcome, <span id="user-name"></span></h2>
+                <p>Account: <span id="display-account-number"></span></p>
+                <p>Balance: $<span id="current-balance"></span></p>
+                <button id="logout-btn">Logout</button>
+            </div>
+
+            <div class="actions">
+                <button id="check-balance-btn">Check Balance</button>
+                <button id="withdraw-btn">Withdraw Money</button>
+                <button id="deposit-btn">Deposit Money</button>
+                <button id="transfer-btn">Transfer Money</button>
+                <button id="transactions-btn">View Transactions</button>
+                <button id="change-pin-btn">Change PIN</button>
+            </div>
+        </div>
+
+        <!-- Modal for transactions -->
+        <div id="transaction-modal" class="modal hidden">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <h3>Transaction History</h3>
+                <div id="transactions-list"></div>
+            </div>
+        </div>
+
+        <!-- Modal for PIN change -->
+        <div id="pin-modal" class="modal hidden">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <h3>Change Your PIN</h3>
+                <form id="change-pin-form">
+                    <div class="form-group">
+                        <label for="current-pin">Current PIN</label>
+                        <input type="password" id="current-pin" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="new-pin">New PIN (4 digits)</label>
+                        <input type="password" id="new-pin" pattern="\d{4}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm-pin">Confirm New PIN</label>
+                        <input type="password" id="confirm-pin" pattern="\d{4}" required>
+                    </div>
+                    <button type="submit">Update PIN</button>
+                    <p id="pin-error" class="error-message"></p>
+                </form>
+            </div>
+        </div>
+
+        <!-- Modal for withdraw/deposit/transfer -->
+        <div id="action-modal" class="modal hidden">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <h3 id="action-title"></h3>
+                <form id="action-form">
+                    <div id="recipient-field" class="form-group hidden">
+                        <label for="recipient-account">Recipient Account</label>
+                        <input type="text" id="recipient-account" placeholder="Enter 8-digit account number">
+                    </div>
+                    <div class="form-group">
+                        <label for="amount">Amount ($)</label>
+                        <input type="number" id="amount" min="0.01" step="0.01" required>
+                    </div>
+                    <button type="submit" id="action-submit-btn">Submit</button>
+                    <p id="action-error" class="error-message"></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>
