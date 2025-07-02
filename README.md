@@ -32,7 +32,7 @@ A complete interactive banking system built with HTML, CSS, and JavaScript.
 banking-system/
 ├── index.html
 ├── style.css
-├── script.js
+├── index.js
 └── README.md
 ```
 
